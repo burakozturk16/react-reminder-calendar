@@ -15,7 +15,7 @@ npm install --save react-reminder-calendar
 ## Basic Sample
 
 ```js
-import ReminderCalendar from "react-remindar-calendar"
+import ReminderCalendar from "react-remindar-calendar/dist"
 
 const data = [
     {
