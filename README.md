@@ -1,70 +1,167 @@
-# Getting Started with Create React App
+# React Reminder Calendar
+An events calendar component built for React and made for modern browsers.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+[![npm (scoped)](https://img.shields.io/npm/v/react-reminder-calendar.svg)](https://www.npmjs.com/package/react-reminder-calendar)
 
-In the project directory, you can run:
+![screen shot](https://github.com/burakozturk16/react-reminder-calendar/blob/master/ss.png)
 
-### `yarn start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+npm install --save react-reminder-calendar
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Basic Sample
 
-### `yarn test`
+```js
+import ReminderCalendar from "react-remindar-calendar"
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const data = [
+    {
+        title: "TODAY, NOV 4",
+        items: [
+            {
+                title: "Dinner with Richard",
+                subTitle: "Richards House",
+                icon: "fa fa-map-pin",
+                startTime: "12:00",
+                endTime: "13:00",
+                isAllDay: false,
+                allDayTitle: "All Day",
+                separatorColor: "#26bdc6",
+                style: {},
+                infoViewComponent: null,
+                rightViewComponent: null
+            },
+            {
+                title: "Online meeting",
+                subTitle: "Zoom",
+                icon: "",
+                startTime: "18:00",
+                endTime: "19:30",
+                isAllDay: false,
+                allDayTitle: "All Day",
+                separatorColor: "#a326c6",
+                style: {},
+                infoViewComponent: <div style={{fontSize: 12}}><small><b>Zoom Link</b>  <kbd>https://zoom.us/udyt4RE</kbd></small></div>,
+                rightViewComponent: null
+            }
+        ],
+        rightButton: {
+            title: "+",
+            show: true,
+            props: {
+                className: "",
+                style: {backgroundColor: '#ccc', border: 'none', width: 22, height: 22}
+            }
+        }
+    },
+    {
+        title: "TOMORROW, NOV 5",
+        items: [
+            {
+                title: "Join the Summit",
+                subTitle: "City Center",
+                icon: "fa fa-map-pin",
+                startTime: "10:00",
+                endTime: "13:00",
+                isAllDay: true,
+                allDayTitle: "All Day",
+                separatorColor: "#69c626",
+                style: {},
+                infoViewComponent: null,
+                rightViewComponent: null
+            },
+            {
+                title: "Enroll the online course",
+                subTitle: "Udemy",
+                icon: "",
+                startTime: "18:00",
+                endTime: "19:30",
+                isAllDay: false,
+                allDayTitle: "All Day",
+                separatorColor: "#e5245a",
+                style: {},
+                infoViewComponent: null,
+                rightViewComponent: null
+            }
+        ],
+        rightButton: {
+            title: "+",
+            show: true,
+            props: {
+                className: "",
+                style: {backgroundColor: '#ccc', border: 'none', width: 22, height: 22}
+            }
+        }
+    }
+]
 
-### `yarn build`
+class App extends React.Component {
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    handleItemClick = (dateSection, item, index) => {
+        
+    }
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    handleRightButtonClick = (dateSection, index) => {
+        
+    }
+    
+    render(){
+        return(
+            <ReminderCalendar
+                shadow
+                dateSections={data}
+                onItemClick={this.handleItemClick}
+                onDateSectionRightButtonClick={this.handleRightButtonClick}
+            />
+        )
+    }
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `yarn eject`
+## Props of ReminderCalendar
+| Name               | Type/Default     | Description
+| ----------------   | ----------- | ------------------------------------------------------------------------------------------------------------
+| shadow             | `false`     | 
+| dateSections       | `array`     | A javascript object array, please see Props of DateSection Items 
+| customDateSectionRightButton     | Component            | If you set this, default right button will be overrided.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Props of DateSection Items
+| Name               | Default     | Description
+| ----------------   | ----------- | ------------------------------------------------------------------------------------------------------------
+| title              | `string`    | 
+| rightButton        | `object` or `Component`    | `title` `show` and `props`
+| items              | `array`     | Please see Props of Item
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Props of Item
+| Name               | Default     | Description
+| ----------------   | ----------- | ------------------------------------------------------------------------------------------------------------
+| title              | `string`    |
+| subTitle           | `string`    |
+| icon               | `string`    |
+| startTime          | `string`    |
+| endTime            | `string`    |
+| isAllDay           | `boolean` `false` |
+| allDayTitle        | `string`    |
+| separatorColor     | `string`    |
+| style              | `object`    |
+| infoViewComponent  | `Component` |
+| rightViewComponent | `Component` |
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Events
+| Name                | Description |
+| ------------------  | ----------  |
+| onItemClick         | `function` with returns `dateSection` `item` and `index`
+| onDateSectionRightButtonClick | `function` with returns `dateSection` and `index`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Styling
+* View `src/index.css` for styling examples.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributing
+Feel free to make a PR :) They are always welcome
