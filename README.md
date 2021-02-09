@@ -4,7 +4,7 @@ An events calendar component built for React and made for modern browsers.
 
 [![npm (scoped)](https://img.shields.io/npm/v/react-reminder-calendar.svg)](https://www.npmjs.com/package/react-reminder-calendar)
 
-![screen shot](https://github.com/burakozturk16/react-reminder-calendar/blob/master/ss.png)
+![screen shot](https://github.com/burakozturk16/react-reminder-calendar/blob/master/ss.jpg)
 
 ## Installation
 
